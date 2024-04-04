@@ -1,64 +1,28 @@
-var express = require("express");
-var logger = require("morgan");
-var cors = require("cors");
-var mongoose = require("mongoose");
+
+
+// var express = require("express");
 // var request = require("request");
 // var crypto = require("crypto");
+// var cors = require("cors");
 // var querystring = require("querystring");
-var cookieParser = require("cookie-parser");
-// var indexRouter = require('./routes/index');
-var usersRouter = require("./routes/users");
-var authRouter = require("./routes/auth");
-const reviewRouter = require("./routes/review.routes")
-const playlistRoutes = require("./routes/playlist.routes")
-const spotifyRouter = require("./routes/spotify.routes")
-var app = express();
+// var cookieParser = require("cookie-parser");
 
-// Spotify API configuration
-// var client_id = "9294120850024bd5a858d8f737d821d6"; // Your clientId
+// var client_id = "9294120850024bd5a858d8f737d821d6"; // your clientId
 // var client_secret = "130ffb9ee7534341bdba008a6efba86b"; // Your secret
 // var redirect_uri = "http://localhost:4000/callback"; // Your redirect uri
-// const generateRandomString = (length) =>
-//   crypto.randomBytes(60).toString("hex").slice(0, length);
+
+// const generateRandomString = (length) => {
+//   return crypto.randomBytes(60).toString("hex").slice(0, length);
+// };
+
 // var stateKey = "spotify_auth_state";
 
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// var app = express();
 
-app.set("trust proxy", 1);
-app.enable("trust proxy");
-
-app.use(
-  cors({
-    origin: [process.env.REACT_APP_URI], // <== URL of our future React app
-  })
-);
-
-// app.use(
-//     cors()
-//   );
-
-app.use(express.static(__dirname + "/public")).use(cookieParser());
-
-
-app.use("/spotify", spotifyRouter)
-app.use("/users", usersRouter);
-app.use("/playlist", playlistRoutes)
-app.use("/auth", authRouter);
-app.use("/reviews", reviewRouter)
-
-
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then((x) =>
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-  )
-  .catch((err) => console.error("Error connecting to mongo", err));
-
-module.exports = app;
-
-
+// app
+//   .use(express.static(__dirname + "/public"))
+//   .use(cors())
+//   .use(cookieParser());
 
 // app.get("/login", function (req, res) {
 //   var state = generateRandomString(16);
@@ -177,6 +141,5 @@ module.exports = app;
 //   });
 // });
 
-// app.use('/', indexRouter);
-
-
+// console.log("Listening on 4000");
+// app.listen(4000);
