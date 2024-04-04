@@ -66,7 +66,7 @@ router.put("/:playlistId", isAuthenticated, async (req, res) => {
     }
 
     console.log(req.body);
-    playlist.tracks.push({track: {...req.body.track}})
+    playlist.tracks.push({ track: { ...req.body.track } });
 
     await playlist.save();
 

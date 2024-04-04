@@ -3,7 +3,7 @@ const { model, Schema } = require("mongoose");
 const playlistSchema = new Schema(
   {
     name: String,
-    owner: { type: Schema.Types.ObjectId, ref: "user" },
+    owner: { type: Schema.Types.ObjectId, ref: "User" },
     tracks: [
       {
         track: {
